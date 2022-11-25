@@ -1,0 +1,51 @@
+        public static string CalculoDigitoVerificadorCI(string NumeroDocumento)
+        {
+            try
+            {
+                int cont = 0;
+                int resultado = 0;
+                int op1, op2 = 0;
+
+                int[] arrConstante = { 2, 9, 8, 7, 6, 3, 4 };
+                char[] arrDocumento = NumeroDocumento.ToCharArray();
+                int[] arrDoc = { 0, 0, 0, 0, 0, 0, 0 };
+
+                if (arrDocumento.Length < 7)
+                {
+                    arrDoc[0] = (int)char.GetNumericValue('0');
+                    for (int c = 0; c < arrDocumento.Length; c++)
+                    {
+                        arrDoc[c + 1] = (int)char.GetNumericValue(arrDocumento[c]);
+                    }
+                }
+                else if (arrDocumento.Length == 7)
+                {
+                    for (int a = 0; a < arrDoc.Length; a++)
+                    {
+                        arrDoc[a] = (int)char.GetNumericValue(arrDocumento[a]);
+                    }
+                }
+
+                for (int b = 0; b < arrDoc.Length; b++)
+                {
+                    op1 = arrDoc[b];
+                    op2 = arrConstante[b];
+                    resultado += op1 * op2;
+                    Console.WriteLine(op1 + " x " + op2 + " = " + op1 * op2 + " - resultado = " + resultado);
+                }
+
+                cont = resultado;
+
+                while (cont % 10 != 0)
+                {
+                    Console.WriteLine(cont.ToString() + " - " + cont % 10);
+                    cont++;
+                }
+                string r = Convert.ToString(cont - resultado);
+                return r;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }

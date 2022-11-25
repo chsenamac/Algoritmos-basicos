@@ -1,0 +1,14 @@
+Public Function CalculoEdad(FechaNacimiento As Date) As Integer
+Dim edad, año As Integer
+Dim nacNow As Date
+
+año = DateTime.Year(DateTime.Now)
+                
+edad = año - DateTime.Year(FechaNacimiento)
+
+If (DateTime.DateDiff("yyyy", FechaNacimiento, DateTime.Now) < 0) Then
+    edad = edad - 1
+End If
+
+CalculoEdad = edad
+End Function

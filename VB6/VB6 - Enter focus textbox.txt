@@ -1,0 +1,6 @@
+EN EL EVENTO KEYPRESS DEL TEXTBOX PEGAR ESTE CODIGO    
+
+If KeyAscii = vbKeyReturn Then
+	SendKeys ("{TAB}")
+        KeyAscii = 0
+End If

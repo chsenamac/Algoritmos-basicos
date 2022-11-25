@@ -1,0 +1,64 @@
+Public Function CalculoDigitoVerificadorCIUY(NumeroDocumento As String) As String
+Dim cont, resultado, op1, op2, i, a, b As Integer
+Dim arrConstante(7) As Integer
+Dim arrDoc(7) As Integer
+Dim intCont As Integer
+Dim lenStr As Integer
+Dim res As String
+
+cont = 0
+resultado = 0
+op1 = 0
+op2 = 0
+intCont = 0
+i = 0
+a = 0
+b = 0
+
+arrConstante(0) = 2
+arrConstante(1) = 9
+arrConstante(2) = 8
+arrConstante(3) = 7
+arrConstante(4) = 6
+arrConstante(5) = 3
+arrConstante(6) = 4
+
+lenStr = Len(NumeroDocumento)
+
+If lenStr = 7 Then
+    arrDoc(0) = CInt(Val(Mid$(NumeroDocumento, 1, 1)))
+    arrDoc(1) = CInt(Val(Mid$(NumeroDocumento, 2, 1)))
+    arrDoc(2) = CInt(Val(Mid$(NumeroDocumento, 3, 1)))
+    arrDoc(3) = CInt(Val(Mid$(NumeroDocumento, 4, 1)))
+    arrDoc(4) = CInt(Val(Mid$(NumeroDocumento, 5, 1)))
+    arrDoc(5) = CInt(Val(Mid$(NumeroDocumento, 6, 1)))
+    arrDoc(6) = CInt(Val(Mid$(NumeroDocumento, 7, 1)))
+ElseIf lenStr = 6 Then
+    arrDoc(0) = 0
+    arrDoc(1) = CInt(Val(Mid$(NumeroDocumento, 1, 1)))
+    arrDoc(2) = CInt(Val(Mid$(NumeroDocumento, 2, 1)))
+    arrDoc(3) = CInt(Val(Mid$(NumeroDocumento, 3, 1)))
+    arrDoc(4) = CInt(Val(Mid$(NumeroDocumento, 4, 1)))
+    arrDoc(5) = CInt(Val(Mid$(NumeroDocumento, 5, 1)))
+    arrDoc(6) = CInt(Val(Mid$(NumeroDocumento, 6, 1)))
+Else
+    Exit Function
+End If
+
+For b = 0 To 7
+    op1 = arrDoc(b)
+    op2 = arrConstante(b)
+    resultado = resultado + op1 * op2
+Next
+
+cont = resultado
+
+Do While (cont Mod 10 <> 0)
+    cont = cont + 1
+Loop
+
+res = Str(cont - resultado)
+
+CalculoDigitoVerificadorCIUY = res
+
+End Function

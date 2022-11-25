@@ -1,0 +1,1 @@
+SELECT Usuario.TipoDoc, Usuario.NumDoc, Usuario.Nombre, Usuario.PriApe, Usuario.SegApe, Usuario.FechaNac, Usuario_Telefono.NumTel FROM Usuario INNER JOIN Usuario_Telefono ON Usuario.TipoDoc = Usuario_Telefono.TipoDoc AND Usuario.NumDoc = Usuario_Telefono.NumDoc ON Usuario.TipoDoc <> Usuario_Telefono.TipoDoc AND Usuario.NumDoc <> Usuario_Telefono.NumDoc 

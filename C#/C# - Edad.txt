@@ -1,0 +1,17 @@
+        public static int Edad(DateTime FechaNacimiento)
+        {
+            try
+            {
+                int edad = DateTime.Now.Year - FechaNacimiento.Year;
+                DateTime nacNow = FechaNacimiento.AddYears(edad);
+                if (DateTime.Now.CompareTo(nacNow) < 0)
+                {
+                    edad--;
+                }
+                return edad;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
